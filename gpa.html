@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GPA Calculator</title>
+    <link rel = "icon" href = "aa.png" >
+</head>
+<body>
+    <h1 style="text-align:center" ><i>GPA Calculator</i></h1>
+    
+        <label style="background-color:#E9E4D0;   margin-left:20%;"><b>Enter No.of Subjects</b></label>
+        <input type="text" id="nor"><button onclick="create()">Submit</button>
+    
+    <div style="background-color:green; height: auto; width: 60%; margin:auto;margin-top:5%; ;" id="calc" >
+       <table id="table1" cellspacing="20px" style="text-align:center; width:100%;border: 1px solid black; "> 
+            <tr>
+                <th >SubjectName</th>
+                <th>Credit</th>
+                <th>GradePoint</th>
+            </tr>
+       </table>
+    </div>
+    <div style="height:20px; width:60%; margin:auto ;text-align:right">
+        <button style="background-color:rgb(133, 32, 91); height:35px ;border-radius: 15%;" onclick="calculation()"><b><i>Calculate</i></b></button>
+        <input type="text" id="ans" placeholder="0">
+    </div>
+    
+</body>
+<script>
+    var c;
+    function create(){
+     c = document.getElementById('nor').value;
+     htmlstuff =`<tr><td><input style="width:100%"type="text"></td><td><input class="credit"style="width:15%"type="Number"></td><td><input class="grade"style="width:25%"type="Number"></td></tr>`;
+        var elem = document.getElementById('table1')
+        for(var i=0;i<c;i++){
+        elem.innerHTML+=htmlstuff;
+        }
+    }
+    function calculation(){
+        let credits = document.getElementsByClassName('credit')
+        let grade = document.getElementsByClassName('grade')
+        let s=0
+        let creditsum=0;
+        for(var i=0;i<c;i++)
+        {
+            creditsum +=parseInt(credits[i].value)
+            s+=credits[i].value*grade[i].value;
+        }
+        console.log(s);
+        console.log(creditsum)
+        
+        let ans = s/creditsum;
+
+       ans = ans.toFixed(2);
+       console.log(ans)
+        document.getElementById('ans').value = ans.toString();
+
+
+    }
+</script>
+</html>
